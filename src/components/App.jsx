@@ -60,7 +60,8 @@ export default class App extends Component {
 			innerHeight,
 		} = this.state;
 		return (
-			<Form onSubmit={ this.handleSubmit }>
+			<Form onSubmit={ this.handleSubmit } style={{ margin: '1em auto', minWidth: 400, maxWidth: 800 }}>
+				<h1>Opener</h1>
 				<FormField label="Location">
 					<FormInput
 						type="url"
