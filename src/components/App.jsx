@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Ribbon from './Ribbon';
 
 import {
 	Form,
@@ -62,6 +63,7 @@ export default class App extends Component {
 		return (
 			<Form onSubmit={ this.handleSubmit } style={{ margin: '1em auto', minWidth: 400, maxWidth: 800 }}>
 				<h1>Opener</h1>
+				<Ribbon />
 				<FormField label="Location">
 					<FormInput
 						type="url"
