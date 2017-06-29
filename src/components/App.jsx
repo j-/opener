@@ -96,6 +96,7 @@ export default class App extends Component {
 							type="url"
 							value={ location }
 							onChange={ this.handleChangeLocation }
+							autoFocus
 						/>
 					</FormField>
 					<FormRow>
