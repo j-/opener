@@ -6,6 +6,7 @@ import {
 	Form,
 	FormField,
 	FormInput,
+	FormLabel,
 	Button,
 	FormRow,
 } from 'elemental';
@@ -110,6 +111,7 @@ export default class App extends Component {
 						/>
 					</FormField>
 				</FormRow>
+				<FormLabel>JavaScript</FormLabel>
 				<Code
 					location={ location }
 					innerWidth={ innerWidth }
