@@ -9,8 +9,7 @@ import {
 	FormLabel,
 	Button,
 	FormRow,
-	Row,
-	Col,
+	Card,
 } from 'elemental';
 
 const copy = require('clipboard-copy');
@@ -91,50 +90,48 @@ export default class App extends Component {
 			<Form onSubmit={ this.handleSubmit }>
 				<h1>Opener</h1>
 				<Ribbon />
-				<FormField label="Window location">
-					<FormInput
-						type="url"
-						value={ location }
-						onChange={ this.handleChangeLocation }
-					/>
-				</FormField>
-				<FormRow>
-					<FormField label="Inner width" width="one-half">
+				<Card>
+					<FormField label="Window location">
 						<FormInput
-							type="number"
-							min={ 0 }
-							value={ innerWidth }
-							onChange={ this.handleChangeInnerWidth }
+							type="url"
+							value={ location }
+							onChange={ this.handleChangeLocation }
 						/>
 					</FormField>
-					<FormField label="Inner height" width="one-half">
-						<FormInput
-							type="number"
-							min={ 0 }
-							value={ innerHeight }
-							onChange={ this.handleChangeInnerHeight }
-						/>
-					</FormField>
-				</FormRow>
-				<FormLabel>JavaScript</FormLabel>
-				<Code
-					location={ location }
-					innerWidth={ innerWidth }
-					innerHeight={ innerHeight }
-				/>
+					<FormRow>
+						<FormField label="Inner width" width="one-half">
+							<FormInput
+								type="number"
+								min={ 0 }
+								value={ innerWidth }
+								onChange={ this.handleChangeInnerWidth }
+							/>
+						</FormField>
+						<FormField label="Inner height" width="one-half">
+							<FormInput
+								type="number"
+								min={ 0 }
+								value={ innerHeight }
+								onChange={ this.handleChangeInnerHeight }
+							/>
+						</FormField>
+					</FormRow>
+					<Button submit type="primary" style={{ width: '100%' }}>
+						Open window
+					</Button>
+				</Card>
 				<br />
-				<Row>
-					<Col sm="1/2">
-						<Button submit type="primary" style={{ width: '100%' }}>
-							Open window
-						</Button>
-					</Col>
-					<Col sm="1/2">
-						<Button onClick={ () => copy(code) } style={{ width: '100%' }}>
-							Copy JavaScript
-						</Button>
-					</Col>
-				</Row>
+				<Card>
+					<FormLabel>JavaScript</FormLabel>
+					<Code
+						location={ location }
+						innerWidth={ innerWidth }
+						innerHeight={ innerHeight }
+					/>
+					<Button onClick={ () => copy(code) } style={{ width: '100%' }}>
+						Copy JavaScript
+					</Button>
+				</Card>
 			</Form>
 		);
 	}
