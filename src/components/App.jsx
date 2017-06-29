@@ -11,6 +11,8 @@ import {
 	FormRow,
 } from 'elemental';
 
+const copy = require('clipboard-copy');
+
 export default class App extends Component {
 	constructor (props) {
 		super(props);
@@ -82,8 +84,9 @@ export default class App extends Component {
 			innerWidth,
 			innerHeight,
 		} = this.state;
+		const code = `window.open('${location}', null, 'width=${innerWidth},height=${innerHeight}');`;
 		return (
-			<Form onSubmit={ this.handleSubmit } style={{ margin: '1em auto', minWidth: 400, maxWidth: 800 }}>
+			<Form onSubmit={ this.handleSubmit }>
 				<h1>Opener</h1>
 				<Ribbon />
 				<FormField label="Window location">
@@ -117,7 +120,10 @@ export default class App extends Component {
 					innerWidth={ innerWidth }
 					innerHeight={ innerHeight }
 				/>
+				<br />
 				<Button submit type="primary">Open window</Button>
+				{ ' ' }
+				<Button onClick={ () => copy(code) }>Copy JavaScript</Button>
 			</Form>
 		);
 	}
