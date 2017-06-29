@@ -91,8 +91,9 @@ export default class App extends Component {
 				<h1>Opener</h1>
 				<Ribbon />
 				<Card>
-					<FormField label="Window location">
+					<FormField label="Window location" htmlFor="window-location">
 						<FormInput
+							id="window-location"
 							type="url"
 							value={ location }
 							onChange={ this.handleChangeLocation }
@@ -100,16 +101,18 @@ export default class App extends Component {
 						/>
 					</FormField>
 					<FormRow>
-						<FormField label="Inner width" width="one-half">
+						<FormField label="Inner width" width="one-half" htmlFor="inner-width">
 							<FormInput
+								id="inner-width"
 								type="number"
 								min={ 0 }
 								value={ innerWidth }
 								onChange={ this.handleChangeInnerWidth }
 							/>
 						</FormField>
-						<FormField label="Inner height" width="one-half">
+						<FormField label="Inner height" width="one-half" htmlFor="inner-height">
 							<FormInput
+								id="inner-height"
 								type="number"
 								min={ 0 }
 								value={ innerHeight }
