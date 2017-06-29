@@ -9,6 +9,8 @@ import {
 	FormLabel,
 	Button,
 	FormRow,
+	Row,
+	Col,
 } from 'elemental';
 
 const copy = require('clipboard-copy');
@@ -121,9 +123,18 @@ export default class App extends Component {
 					innerHeight={ innerHeight }
 				/>
 				<br />
-				<Button submit type="primary">Open window</Button>
-				{ ' ' }
-				<Button onClick={ () => copy(code) }>Copy JavaScript</Button>
+				<Row>
+					<Col sm="1/2">
+						<Button submit type="primary" style={{ width: '100%' }}>
+							Open window
+						</Button>
+					</Col>
+					<Col sm="1/2">
+						<Button onClick={ () => copy(code) } style={{ width: '100%' }}>
+							Copy JavaScript
+						</Button>
+					</Col>
+				</Row>
 			</Form>
 		);
 	}
