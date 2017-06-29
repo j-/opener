@@ -109,6 +109,7 @@ export default class App extends Component {
 						/>
 					</FormField>
 				</FormRow>
+				<pre>{`window.open("${location}", null, "width=${innerWidth},height=${innerHeight}")`}</pre>
 				<Button submit type="primary">Open</Button>
 			</Form>
 		);
