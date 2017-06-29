@@ -6,8 +6,7 @@ import {
 	FormField,
 	FormInput,
 	Button,
-	Row,
-	Col,
+	FormRow,
 } from 'elemental';
 
 export default class App extends Component {
@@ -92,28 +91,24 @@ export default class App extends Component {
 						onChange={ this.handleChangeLocation }
 					/>
 				</FormField>
-				<Row>
-					<Col sm="1/2">
-						<FormField label="Inner Width">
-							<FormInput
-								type="number"
-								min={ 0 }
-								value={ innerWidth }
-								onChange={ this.handleChangeInnerWidth }
-							/>
-						</FormField>
-					</Col>
-					<Col sm="1/2">
-						<FormField label="Inner Height">
-							<FormInput
-								type="number"
-								min={ 0 }
-								value={ innerHeight }
-								onChange={ this.handleChangeInnerHeight }
-							/>
-						</FormField>
-					</Col>
-				</Row>
+				<FormRow>
+					<FormField label="Inner Width" width="one-half">
+						<FormInput
+							type="number"
+							min={ 0 }
+							value={ innerWidth }
+							onChange={ this.handleChangeInnerWidth }
+						/>
+					</FormField>
+					<FormField label="Inner Height" width="one-half">
+						<FormInput
+							type="number"
+							min={ 0 }
+							value={ innerHeight }
+							onChange={ this.handleChangeInnerHeight }
+						/>
+					</FormField>
+				</FormRow>
 				<Button submit type="primary">Open</Button>
 			</Form>
 		);
