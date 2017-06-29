@@ -85,7 +85,7 @@ export default class App extends Component {
 			<Form onSubmit={ this.handleSubmit } style={{ margin: '1em auto', minWidth: 400, maxWidth: 800 }}>
 				<h1>Opener</h1>
 				<Ribbon />
-				<FormField label="Location">
+				<FormField label="Window Location">
 					<FormInput
 						type="url"
 						value={ location }
