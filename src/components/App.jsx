@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Ribbon from './Ribbon';
-import Code from './Code';
+import SectionOpener from './SectionOpener';
+import SectionCode from './SectionCode';
 
 import {
 	Form,
@@ -22,7 +23,8 @@ export default class App extends Component {
 			innerWidth: 800,
 			innerHeight: 500,
 		};
-		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleOpenWindow = this.handleOpenWindow.bind(this);
+		this.handleCopyCode = this.handleCopyCode.bind(this);
 		this.handleChangeLocation = this.handleChangeLocation.bind(this);
 		this.handleChangeInnerWidth = this.handleChangeInnerWidth.bind(this);
 		this.handleChangeInnerHeight = this.handleChangeInnerHeight.bind(this);
@@ -37,7 +39,7 @@ export default class App extends Component {
 		window.removeEventListener('message', this.handleWindowMessage);
 	}
 
-	handleSubmit (e) {
+	handleOpenWindow (e) {
 		e.preventDefault();
 		const {
 			location,
@@ -48,6 +50,18 @@ export default class App extends Component {
 			location,
 			null,
 			`width=${innerWidth},height=${innerHeight}`
+		);
+	}
+
+	handleCopyCode (e) {
+		e.preventDefault();
+		const {
+			location,
+			innerWidth,
+			innerHeight,
+		} = this.state;
+		copy(
+			`window.open('${location}', null, 'width=${innerWidth},height=${innerHeight}');`
 		);
 	}
 
@@ -85,58 +99,27 @@ export default class App extends Component {
 			innerWidth,
 			innerHeight,
 		} = this.state;
-		const code = `window.open('${location}', null, 'width=${innerWidth},height=${innerHeight}');`;
 		return (
-			<Form onSubmit={ this.handleSubmit }>
-				<h1>Opener</h1>
+			<div>
 				<Ribbon />
-				<Card>
-					<FormField label="Window location" htmlFor="window-location">
-						<FormInput
-							id="window-location"
-							type="url"
-							value={ location }
-							onChange={ this.handleChangeLocation }
-							autoFocus
-						/>
-					</FormField>
-					<FormRow>
-						<FormField label="Inner width" width="one-half" htmlFor="inner-width">
-							<FormInput
-								id="inner-width"
-								type="number"
-								min={ 0 }
-								value={ innerWidth }
-								onChange={ this.handleChangeInnerWidth }
-							/>
-						</FormField>
-						<FormField label="Inner height" width="one-half" htmlFor="inner-height">
-							<FormInput
-								id="inner-height"
-								type="number"
-								min={ 0 }
-								value={ innerHeight }
-								onChange={ this.handleChangeInnerHeight }
-							/>
-						</FormField>
-					</FormRow>
-					<Button submit type="primary" style={{ width: '100%' }}>
-						Open window
-					</Button>
-				</Card>
+				<h1>Opener</h1>
+				<SectionOpener
+					location={ location }
+					innerWidth={ innerWidth }
+					innerHeight={ innerHeight }
+					onChangeLocation={ this.handleChangeLocation }
+					onChangeInnerWidth={ this.handleChangeInnerWidth }
+					onChangeInnerHeight={ this.handleChangeInnerHeight }
+					onSubmit={ this.handleOpenWindow }
+				/>
 				<br />
-				<Card>
-					<FormLabel>JavaScript</FormLabel>
-					<Code
-						location={ location }
-						innerWidth={ innerWidth }
-						innerHeight={ innerHeight }
-					/>
-					<Button onClick={ () => copy(code) } style={{ width: '100%' }}>
-						Copy JavaScript
-					</Button>
-				</Card>
-			</Form>
+				<SectionCode
+					location={ location }
+					innerWidth={ innerWidth }
+					innerHeight={ innerHeight }
+					onSubmit={ this.handleCopyCode }
+				/>
+			</div>
 		);
 	}
 }

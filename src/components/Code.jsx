@@ -3,7 +3,7 @@ import { Card } from 'elemental';
 import './Code.less';
 
 const Code = ({ location, innerWidth, innerHeight }) => (
-	<Card style={{ backgroundColor: '#1e1e1e', wordWrap: 'break-word' }}>
+	<Card className="card-code">
 		<code className="mtk11">window</code>
 		<code className="mtk1">.</code>
 		<code className="mtk10">open</code>
