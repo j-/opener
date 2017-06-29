@@ -20,6 +20,15 @@ export default class App extends Component {
 		this.handleChangeLocation = this.handleChangeLocation.bind(this);
 		this.handleChangeInnerWidth = this.handleChangeInnerWidth.bind(this);
 		this.handleChangeInnerHeight = this.handleChangeInnerHeight.bind(this);
+		this.handleWindowMessage = this.handleWindowMessage.bind(this);
+	}
+
+	componentDidMount () {
+		window.addEventListener('message', this.handleWindowMessage);
+	}
+
+	componentWillUnmount () {
+		window.removeEventListener('message', this.handleWindowMessage);
 	}
 
 	handleSubmit (e) {
@@ -52,6 +61,16 @@ export default class App extends Component {
 		this.setState({
 			innerHeight: e.target.value,
 		});
+	}
+
+	handleWindowMessage (e) {
+		const { innerWidth, innerHeight } = e.data;
+		if (innerWidth) {
+			this.setState({ innerWidth });
+		}
+		if (innerHeight) {
+			this.setState({ innerHeight });
+		}
 	}
 
 	render () {
