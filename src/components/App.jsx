@@ -3,16 +3,6 @@ import Ribbon from './Ribbon';
 import SectionOpener from './SectionOpener';
 import SectionCode from './SectionCode';
 
-import {
-	Form,
-	FormField,
-	FormInput,
-	FormLabel,
-	Button,
-	FormRow,
-	Card,
-} from 'elemental';
-
 const copy = require('clipboard-copy');
 
 export default class App extends Component {
