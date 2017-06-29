@@ -94,7 +94,7 @@ export default class App extends Component {
 				</FormField>
 				<Row>
 					<Col sm="1/2">
-						<FormField label="Width">
+						<FormField label="Inner Width">
 							<FormInput
 								type="number"
 								min={ 0 }
@@ -104,7 +104,7 @@ export default class App extends Component {
 						</FormField>
 					</Col>
 					<Col sm="1/2">
-						<FormField label="Height">
+						<FormField label="Inner Height">
 							<FormInput
 								type="number"
 								min={ 0 }
