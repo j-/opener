@@ -10,7 +10,7 @@ import {
 
 const SectionCode = ({
 	onSubmit,
-	location,
+	locationEscaped,
 	innerWidth,
 	innerHeight,
 }) => (
@@ -18,7 +18,7 @@ const SectionCode = ({
 		<Form onSubmit={ onSubmit }>
 			<FormLabel>JavaScript</FormLabel>
 			<Code
-				location={ location }
+				location={ locationEscaped }
 				innerWidth={ innerWidth }
 				innerHeight={ innerHeight }
 			/>

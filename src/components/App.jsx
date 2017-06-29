@@ -20,6 +20,7 @@ export default class App extends Component {
 		super(props);
 		this.state = {
 			location: 'https://skeoh.com/sizer/',
+			locationEscaped: 'https://skeoh.com/sizer/',
 			innerWidth: 800,
 			innerHeight: 500,
 		};
@@ -56,18 +57,21 @@ export default class App extends Component {
 	handleCopyCode (e) {
 		e.preventDefault();
 		const {
-			location,
+			locationEscaped,
 			innerWidth,
 			innerHeight,
 		} = this.state;
 		copy(
-			`window.open('${location}', null, 'width=${innerWidth},height=${innerHeight}');`
+			`window.open('${locationEscaped}', null, 'width=${innerWidth},height=${innerHeight}');`
 		);
 	}
 
 	handleChangeLocation (e) {
+		const location = e.currentTarget.value;
+		const locationEscaped = encodeURI(location).replace(/'/g, '\\\'');
 		this.setState({
-			location: e.target.value,
+			location,
+			locationEscaped,
 		});
 	}
 
@@ -96,6 +100,7 @@ export default class App extends Component {
 	render () {
 		const {
 			location,
+			locationEscaped,
 			innerWidth,
 			innerHeight,
 		} = this.state;
@@ -114,7 +119,7 @@ export default class App extends Component {
 				/>
 				<br />
 				<SectionCode
-					location={ location }
+					locationEscaped={ locationEscaped }
 					innerWidth={ innerWidth }
 					innerHeight={ innerHeight }
 					onSubmit={ this.handleCopyCode }
