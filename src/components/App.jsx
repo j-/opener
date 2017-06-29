@@ -85,7 +85,7 @@ export default class App extends Component {
 			<Form onSubmit={ this.handleSubmit } style={{ margin: '1em auto', minWidth: 400, maxWidth: 800 }}>
 				<h1>Opener</h1>
 				<Ribbon />
-				<FormField label="Window Location">
+				<FormField label="Window location">
 					<FormInput
 						type="url"
 						value={ location }
@@ -93,7 +93,7 @@ export default class App extends Component {
 					/>
 				</FormField>
 				<FormRow>
-					<FormField label="Inner Width" width="one-half">
+					<FormField label="Inner width" width="one-half">
 						<FormInput
 							type="number"
 							min={ 0 }
@@ -101,7 +101,7 @@ export default class App extends Component {
 							onChange={ this.handleChangeInnerWidth }
 						/>
 					</FormField>
-					<FormField label="Inner Height" width="one-half">
+					<FormField label="Inner height" width="one-half">
 						<FormInput
 							type="number"
 							min={ 0 }
@@ -115,7 +115,7 @@ export default class App extends Component {
 					innerWidth={ innerWidth }
 					innerHeight={ innerHeight }
 				/>
-				<Button submit type="primary">Open</Button>
+				<Button submit type="primary">Open window</Button>
 			</Form>
 		);
 	}
