@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Ribbon from './Ribbon';
+import Code from './Code';
 
 import {
 	Form,
@@ -109,7 +110,11 @@ export default class App extends Component {
 						/>
 					</FormField>
 				</FormRow>
-				<pre>{`window.open("${location}", null, "width=${innerWidth},height=${innerHeight}")`}</pre>
+				<Code
+					location={ location }
+					innerWidth={ innerWidth }
+					innerHeight={ innerHeight }
+				/>
 				<Button submit type="primary">Open</Button>
 			</Form>
 		);
